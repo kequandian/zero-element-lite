@@ -1,0 +1,21 @@
+@endpoint = http://localhost:8080
+### header属性说明
+# 必要属性：
+# C_BASE_URL：本地的html文件 或 远程地址 如 https://www.baidu.com 如果是网址 需要带http(s)头
+# 本地文件的相对路径 "/" 为api的根目录 也可带绝对路径
+# 非必要属性：
+# C_BASE_FOLDER：指定生成后的pdf文件放在哪个文件夹 默认为api根目录的/pdf
+# C_BASE_PDFNAME：指定生成后的pdf名称 默认为 随机GUID
+# C_BASE_FORMAT：指定生成后的pdf大小 默认为A4纸大小
+###
+### 注意事项
+# 如果声明了C_BASE_PDFNAME 
+# 且本地pdf文件中有相同的名字 
+# 那么重新更新的内容会覆盖掉原来的pdf
+### 转换api（暂不支持上传转换）
+POST {{endpoint}}/pdf/transform
+Content-Type: application/json
+C_BASE_URL: https://zf.hdqmjs.com/#/print?formId=30&dataId=3
+C_BASE_FOLDER: /pdf
+C_BASE_PDFNAME: pdfTest
+C_BASE_FORMAT: A4
