@@ -15,7 +15,12 @@
 ### 转换api（暂不支持上传转换）
 POST {{endpoint}}/pdf/transform
 Content-Type: application/json
-C_BASE_URL: https://zf.hdqmjs.com/#/print?formId=30&dataId=3
+C_BASE_URL: dist
 C_BASE_FOLDER: /pdf
 C_BASE_PDFNAME: pdfTest
 C_BASE_FORMAT: A4
+
+
+
+### 下载api
+GET {{endpoint}}/pdf/upload/pdfTest.pdf

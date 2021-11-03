@@ -2,7 +2,7 @@ let puppeteer = require("puppeteer")
 let path = require("path")
 let {guid} = require('../tool/tools')
 let fs = require("fs")
-
+let send = require("koa-send")
 
 // 检查文件夹是否存在
 let isFolder = async(url) =>{
@@ -64,6 +64,7 @@ let toPdf = async(url,options) =>{
         await browser.close();
         Message = {code:200,msg:"转换成功！",data:{
             "pdf":`${folder}/${pdfName}.pdf`,
+            "name":`${pdfName}.pdf`,
             "format":format,
             "source":`${url}`
         }}
@@ -84,4 +85,12 @@ let UrlToPdf = async(ctx)=>{
     let message = await toPdf(body["c_base_url"],options)
     ctx.response.body=message
 }
-module.exports={UrlToPdf}
+
+// 下载PDF
+let UploadPdf = async(ctx,name) =>{
+    const url = `pdf/${name}`
+    ctx.attachment(path.resolve(url))
+    await send(ctx,url)
+}
+
+module.exports={UrlToPdf,UploadPdf}
