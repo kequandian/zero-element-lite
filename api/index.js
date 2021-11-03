@@ -87,10 +87,10 @@ let UrlToPdf = async(ctx)=>{
 }
 
 // 下载PDF
-let UploadPdf = async(ctx,name) =>{
+let downloadPdf = async(ctx,name) =>{
     const url = `pdf/${name}`
     ctx.attachment(path.resolve(url))
     await send(ctx,url)
 }
 
-module.exports={UrlToPdf,UploadPdf}
+module.exports={UrlToPdf,downloadPdf}
