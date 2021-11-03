@@ -60,7 +60,7 @@ let toPdf = async(url,options) =>{
             await mkdirWithPdf(options.folder)
         }
         fs.writeFileSync(path.resolve(`./${folder}/${pdfName}.pdf`),"")
-        await page.pdf({path:`./${folder}/${pdfName}.pdf`,format:format})
+        await page.pdf({path:`./${folder}/${pdfName}.pdf`,format:format,printBackground:true})
         await browser.close();
         Message = {code:200,msg:"转换成功！",data:{
             "pdf":`${folder}/${pdfName}.pdf`,

@@ -15,7 +15,7 @@
 ### 转换api（暂不支持上传转换）
 POST {{endpoint}}/pdf/transform
 Content-Type: application/json
-C_BASE_URL: dist
+C_BASE_URL: http://localhost:8000/sys/testPageFetch?id=4
 C_BASE_FOLDER: /pdf
 C_BASE_PDFNAME: pdfTest
 C_BASE_FORMAT: A4
