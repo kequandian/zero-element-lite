@@ -6,6 +6,9 @@
   "directories": {
     "lib": "lib"
   },
+  "bin": {
+    "pdf-cli": "./app.sh"
+  },
   "scripts": {
     "start": "serve ./dist"
   },
