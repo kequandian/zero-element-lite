@@ -13,6 +13,10 @@
 ./app.sh -I 
 ```
 进行初始化工具 初始化完成后
+
+把dist放在cli主文件夹中 然后输入
+./app.sh -E 打开 dist服务器
+
 ```bash
 如果端口冲突 执行
 ./app.sh -P 8001
@@ -29,6 +33,7 @@
 ./app.sh -N (输出的pdf文件名字) -B (需要转换的地址) -T
 ```
 即可生成pdf。pdf的生成地址在cli主目录
+
 
 这里注意，需要转换的地址可以为本地的html文件 相对于pdf-cli目录的路径 也可以是绝对路径 或者网页地址
 
@@ -75,5 +80,9 @@
 -T -N -B 的综合应用
 
 ./app.sh -N newPdf -B http://www.baidu.com -T
+
+-E 打开dist的服务器
+
+./app.sh -E
 
 注意：默认的 -N 名称是defaultPdf 默认 -B 的地址是http://www.baidu.com -B 的地址可以使用绝对路径 或相对于pdf-cli目录的路径

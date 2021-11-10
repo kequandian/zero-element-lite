@@ -2,7 +2,7 @@
 # arr=(http://www.baidu.com defaultPdf)
 url=http://www.baidu.com
 pdfName=defaultPdf
-while getopts "ISUB:bN:nTHP:pL" arg #选项后面的冒号表示该选项需要参数
+while getopts "ISUB:bN:nTHP:pLE" arg #选项后面的冒号表示该选项需要参数
 do
         case $arg in
             I)
@@ -63,13 +63,14 @@ do
                 done
                 ;;
             E)
-                if[ ! -d ./node_modules ]
+                if [ ! -d ./node_modules ]
                 then npm i
                 fi
-                
+                npm start
+                ;;
             H)
             echo "命令说明"
-            echo "./app.sh (-I) (-P 端口) (-S) (-U) (-N pdf名称) (-B 转换地址) (-T) (-H) (-L)"
+            echo "./app.sh (-I) (-P 端口) (-S) (-U) (-N pdf名称) (-B 转换地址) (-T) (-H) (-L) (-E)"
             echo "-H：查看帮助"
             echo "./app.sh -H"
             echo "-I：初始化工具"
@@ -91,6 +92,8 @@ do
             echo "-T -N -B 的综合应用"
             echo "./app.sh -N newPdf -B http://www.baidu.com -T"
             echo "注意：默认的 -N 名称是$pdfName 默认 -B 的地址是$url -B 的地址可以使用绝对路径 或相对于pdf-cli目录的路径"
+            echo "-E 打开dist的服务器"
+            echo "./app.sh -E"
             ;;
             ?)  #当有不认识的选项的时候arg为?
             echo "请使用-H来查看帮助命令"
