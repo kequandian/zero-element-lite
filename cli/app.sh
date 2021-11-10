@@ -42,11 +42,8 @@ do
             then mkdir pdf
             fi
                curl "http://localhost:$port/pdf/transform" -X POST --header "c_base_url:$url" --header "c_base_folder:/pdf" --header "c_base_pdfname:$pdfName" --header "c_base_format:A4" > logs/logs_$buildTime.json
-               if [ ! -d ./pdf-cli/pdf/$pdfName.pdf ]
-               then echo '{ "msg":"生成失败！可能是访问网页连接超时"}' > logs/logs_$buildTime.json
-               echo "生成失败！检查网络是否超时！"
-               else mv ./pdf-cli/pdf/$pdfName.pdf ./pdf
-               fi
+                mv ./pdf-cli/pdf/$pdfName.pdf ./pdf
+
                ;;
             L)
                 find ./logs -type f -name "logs_$(date '+%y%m%d')*.json" > logs/today.txt
@@ -65,6 +62,11 @@ do
                     echo ""
                 done
                 ;;
+            E)
+                if[ ! -d ./node_modules ]
+                then npm i
+                fi
+                
             H)
             echo "命令说明"
             echo "./app.sh (-I) (-P 端口) (-S) (-U) (-N pdf名称) (-B 转换地址) (-T) (-H) (-L)"
